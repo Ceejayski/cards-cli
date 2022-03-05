@@ -25,8 +25,8 @@ Below are the different comand line arguents and their use case:
 
 ## Initial Analysis
 
-**Cards::Magic.group_by_set**
-This uses the `Net::HTTP` default module to fetch data from https://api.magicthegathering.io/v1/cards endpoint and converts the json response to a hash with symbolized keys.
+**Cards::Magic.get**
+This uses the `Net::HTTP` default module to fetch data from https://api.magicthegathering.io/v1/cards endpoint and converts the json response to an array of hashes with symbolized keys.
 
 **Cards::Magic.group_by_set**
 This accepts an array of hashes and uses the enumarable method `group_by` to group cards according to their set, it returns an hash with `:set`property as the key and an array of cards with the same `:set` property as the hash values
