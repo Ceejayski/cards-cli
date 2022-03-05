@@ -1,4 +1,4 @@
-# Cards
+# Cards::Magic
 Cards is the magicthegetthering unofficial ruby API client
 ## Installation
 
@@ -22,6 +22,7 @@ Below are the different comand line arguents and their use case:
 - `cards --groupby-set` or `cards -s` This get data from the api and groups response according to the set property value.
 - `cards --groupby-set-rarirty` or `cards -r` This get data from the api and groups response according to the set property value and groups each sets it's rarity.
 - `cards --groupby-set` or `cards -k` Returns a list of cards from the  **Khans of Tarkir (KTK)** set that ONLY have the colours `red` **AND** `blue`.
+- `cards --help` returns list of commands and their descriptions
 
 ## Initial Analysis
 
