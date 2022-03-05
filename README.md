@@ -1,4 +1,4 @@
-# Cards
+# Cards::Magic
 Cards is the magicthegetthering unofficial ruby API client
 ## Installation
 
@@ -22,21 +22,28 @@ Below are the different comand line arguents and their use case:
 - `cards --groupby-set` or `cards -s` This get data from the api and groups response according to the set property value.
 - `cards --groupby-set-rarirty` or `cards -r` This get data from the api and groups response according to the set property value and groups each sets it's rarity.
 - `cards --groupby-set` or `cards -k` Returns a list of cards from the  **Khans of Tarkir (KTK)** set that ONLY have the colours `red` **AND** `blue`.
+- `cards --help` returns list of commands and their descriptions
 
 ## Initial Analysis
 
-**Cards::Magic.group_by_set**
-This uses the `Net::HTTP` default module to fetch data from https://api.magicthegathering.io/v1/cards endpoint and converts the json response to a hash with symbolized keys.
+**Cards::Magic.get**
+This uses the `Net::HTTP` default module to fetch data from https://api.magicthegathering.io/v1/cards endpoint and converts the json response to an array of hashes with symbolized keys.
 
 **Cards::Magic.group_by_set**
 This accepts an array of hashes and uses the enumarable method `group_by` to group cards according to their set, it returns an hash with `:set`property as the key and an array of cards with the same `:set` property as the hash values
-```Cards::Magic.group_by_set([{set: 'pending', number: 1}, {set: 'pending', number: 2}, {set: 'closed', number: 3}]) == {"pending"=>[{set: 'pending', number: 1}, {set: 'pending', number: 2}], "closed" => [{set: 'closed', number: 3}]}```
+```ruby
+Cards::Magic.group_by_set([{set: 'pending', number: 1}, {set: 'pending', number: 2}, {set: 'closed', number: 3}]) == {"pending"=>[{set: 'pending', number: 1}, {set: 'pending', number: 2}], "closed" => [{set: 'closed', number: 3}]}
+```
 **Cards::Magic.group_set_by_rarity**
 This accepts an array of hashes and call the group_by_set to group cards according to their set while also grouping `:set` cards by `rarity`, it returns an hash with `:set`property as the key and an hash of cards with the same `:set` property grouped by rarity as the hash values
-```Cards::Magic.group_set_by_rarity([{set: 'pending', rarity: "seen", number: 1}, {set: 'pending',rarity: "unseen", number: 2}) == {"pending"=>{"seen"=> [{set: 'pending', rarity: "seen", number: 1}], "unseen"=> [{set: 'pending', rarity: "unseen", number: 2}]}```
+```ruby
+Cards::Magic.group_set_by_rarity([{set: 'pending', rarity: "seen", number: 1}, {set: 'pending',rarity: "unseen", number: 2}) == {"pending"=>{"seen"=> [{set: 'pending', rarity: "seen", number: 1}], "unseen"=> [{set: 'pending', rarity: "unseen", number: 2}]}
+```
 **Cards::Magic.group_set_by_colors**
 This accepts an array of hashes and return an array where these conditions `:set = "KTK" && :colors.includes?('red') && :colors.includes? pass('blue')` passes.
-```Cards::Magic.group_set_by_colors([{set: 'pending', colors: ['red','blue'], number: 1}, {set: 'KTK', colors: ['red','blue'], number: 2}]) == [{set: 'KTK', colors: ['red','blue'], number: 2}]```
+```ruby
+Cards::Magic.group_set_by_colors([{set: 'pending', colors: ['red','blue'], number: 1}, {set: 'KTK', colors: ['red','blue'], number: 2}]) == [{set: 'KTK', colors: ['red','blue'], number: 2}]
+```
 
 
 
