@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
-
-RSpec.describe "CardsMagic CLI" do 
+RSpec.describe "CardsMagic CLI" do
   it "supports the --help flag" do
     command = "./exe/cards --help"
     expect { system(command) }
@@ -31,7 +29,6 @@ RSpec.describe "CardsMagic CLI" do
     expect { system(command) }
       .to_not output
       .to_stderr_from_any_process
-      
   end
 
   it "support get list of cards with KTK as set and colrs red & blue" do
@@ -42,6 +39,5 @@ RSpec.describe "CardsMagic CLI" do
     expect { system(command) }
       .to_not output
       .to_stderr_from_any_process
-      
   end
 end

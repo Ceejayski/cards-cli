@@ -23,7 +23,7 @@ end
 
 begin
   parser.parse!
-  
+
   pp Cards::Magic.cli_run(options[:selection])
 rescue OptionParser::InvalidArgument => e
   warn %(#{e.message.capitalize}. Run "#{File.basename($PROGRAM_NAME)}" --help for details.)

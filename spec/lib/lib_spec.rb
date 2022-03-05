@@ -3,11 +3,11 @@
 RSpec.describe Cards do
   context "cli-functions" do
     array = [
-      { "me": 1, "rarity": "unseen", "set": "10e", "colors": %w[red blue] }, 
+      { "me": 1, "rarity": "unseen", "set": "10e", "colors": %w[red blue] },
       { "me": 2, "rarity": "unseen", "set": "10e", "colors": %w[red blue] },
-      { "me": 3, "rarity": "seen", "set": "10g", "colors": %w[red blue] }, 
       { "me": 3, "rarity": "seen", "set": "10g", "colors": %w[red blue] },
-      { "me": 6, "rarity": "common", "set": "KTK", "colors": %w[red blue] }, 
+      { "me": 3, "rarity": "seen", "set": "10g", "colors": %w[red blue] },
+      { "me": 6, "rarity": "common", "set": "KTK", "colors": %w[red blue] },
       { "me": 4, "rarity": "unseen", "set": "10e", "colors": %w[red blue] }
     ]
     it "expect group_by_set to group_cards by sets" do
