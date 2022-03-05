@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "../lib/cards"
+require "optparse"
+
+# CLI ARGVS options
+options = {}
+
+parser = OptionParser.new do |opts|
+  opts.banner = "Fetch data from the magicthegathering API"
+  opts.on("-s", "--groupby-set", "Group cards by their set property") do
+    options[:selection] = "s"
+  end
+  opts.on("-r", "--groupby-set-rarity", "Get cards by set and within each set grouped by rarity") do
+    options[:selection] = "r"
+  end
+  opts.on("-k", "--groupby-set",
+          "List of cards from the  Khans of Tarkir (KTK) set that ONLY have the colours `red` and `blue`") do
+    options[:selection] = "k"
+  end
+end
+
+begin
+  parser.parse!
+  
+  pp Cards::Magic.cli_run(options[:selection])
+rescue OptionParser::InvalidArgument => e
+  warn %(#{e.message.capitalize}. Run "#{File.basename($PROGRAM_NAME)}" --help for details.)
+  exit 1
+rescue KeyError
+  warn %(Insufficient arguments. Run "#{File.basename($PROGRAM_NAME)}" --help for details.)
+  exit 2
+end
