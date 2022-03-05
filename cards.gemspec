@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["sirchijioke1@gmail.com"]
 
   spec.summary       = "MagictheGathering API"
-  spec.description   = "MagictheGathering API inofficial ruby gem"
+  spec.description   = "MagictheGathering API unofficial ruby gem"
   spec.homepage      = "https://github.com/ceejayski/cards-cli"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.4.0"
