@@ -30,13 +30,19 @@ This uses the `Net::HTTP` default module to fetch data from https://api.magicthe
 
 **Cards::Magic.group_by_set**
 This accepts an array of hashes and uses the enumarable method `group_by` to group cards according to their set, it returns an hash with `:set`property as the key and an array of cards with the same `:set` property as the hash values
-```Cards::Magic.group_by_set([{set: 'pending', number: 1}, {set: 'pending', number: 2}, {set: 'closed', number: 3}]) == {"pending"=>[{set: 'pending', number: 1}, {set: 'pending', number: 2}], "closed" => [{set: 'closed', number: 3}]}```
+```ruby
+Cards::Magic.group_by_set([{set: 'pending', number: 1}, {set: 'pending', number: 2}, {set: 'closed', number: 3}]) == {"pending"=>[{set: 'pending', number: 1}, {set: 'pending', number: 2}], "closed" => [{set: 'closed', number: 3}]}
+```
 **Cards::Magic.group_set_by_rarity**
 This accepts an array of hashes and call the group_by_set to group cards according to their set while also grouping `:set` cards by `rarity`, it returns an hash with `:set`property as the key and an hash of cards with the same `:set` property grouped by rarity as the hash values
-```Cards::Magic.group_set_by_rarity([{set: 'pending', rarity: "seen", number: 1}, {set: 'pending',rarity: "unseen", number: 2}) == {"pending"=>{"seen"=> [{set: 'pending', rarity: "seen", number: 1}], "unseen"=> [{set: 'pending', rarity: "unseen", number: 2}]}```
+```ruby
+Cards::Magic.group_set_by_rarity([{set: 'pending', rarity: "seen", number: 1}, {set: 'pending',rarity: "unseen", number: 2}) == {"pending"=>{"seen"=> [{set: 'pending', rarity: "seen", number: 1}], "unseen"=> [{set: 'pending', rarity: "unseen", number: 2}]}
+```
 **Cards::Magic.group_set_by_colors**
 This accepts an array of hashes and return an array where these conditions `:set = "KTK" && :colors.includes?('red') && :colors.includes? pass('blue')` passes.
-```Cards::Magic.group_set_by_colors([{set: 'pending', colors: ['red','blue'], number: 1}, {set: 'KTK', colors: ['red','blue'], number: 2}]) == [{set: 'KTK', colors: ['red','blue'], number: 2}]```
+```ruby
+Cards::Magic.group_set_by_colors([{set: 'pending', colors: ['red','blue'], number: 1}, {set: 'KTK', colors: ['red','blue'], number: 2}]) == [{set: 'KTK', colors: ['red','blue'], number: 2}]
+```
 
 
 
